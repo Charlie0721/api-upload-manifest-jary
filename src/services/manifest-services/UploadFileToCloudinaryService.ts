@@ -30,11 +30,12 @@ export class UploadFileToCloudinaryService {
             if (!newFile.fileBase64) {
                 return res.status(400).json({ error: 'Debe proporcionar un archivo en formato Base64' });
             }
-
+            console.log(newFile);
+            
             const result = await cloudinary.v2.uploader.upload(tempFilePath, {
                 resource_type: 'auto',
             });
-
+            console.log(result);
             const newManifest = new Manifest({
                 manifestPosId: newFile.manifestPosId,
                 manifestName: newFile.manifestName,
